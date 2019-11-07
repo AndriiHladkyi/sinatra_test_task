@@ -6,12 +6,9 @@ gem 'rspec'
 gem 'sinatra'
 gem 'sinatra-reloader'
 gem 'pry'
-gem 'pg'
-gem 'sqlite3'
 
-group :development do
-end
-
+gem 'sqlite3', :group => [:development, :test]
 group :production do
+  gem 'thin'
   gem 'pg'
 end
