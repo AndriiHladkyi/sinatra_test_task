@@ -1,0 +1,26 @@
+-if @messages.last
+  -if @messages.last.visited == false && @messages.last.destroyable == false
+    %h3 Destroy after 1 hour (default)
+    .form
+      %form{action: '/destroy', method: :post}
+        %input{name: 'id', type: 'hidden', value: @messages.last.id}
+        %label Destroy type
+        %p.radio
+          %input{type: 'radio', name: 'type', value:'after_visit'} After Visits
+        %p.radio
+          How many visits
+          %input{type: 'number', name: 'visits', value: '1'} 
+        %p.radio
+          %input{type: 'radio', name: 'type', value: 'after_hour', checked: 'checked'} After hours
+        %p.radio
+          How many hours
+          %input{type: 'number', step: '0.01', name: 'hours', value: '1'}
+        %button Schedule destroying
+  -else
+    .div
+      %a{href: "/message/#{@messages.last.identificator}"} #{@messages.last.title}
+      %h4 link for message /message/#{@messages.last.identificator}
+-else
+  %h3 No messages  
+.div
+  %a{href: '/'} Back

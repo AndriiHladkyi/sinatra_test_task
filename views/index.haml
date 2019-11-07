@@ -1,0 +1,10 @@
+%h5 Write your Message
+%div.form
+  %form{:action => '/create', :method => 'POST'}
+    .text
+      %textarea{:cols => '50', :rows => '4', name: 'message[title]'}
+    .submit
+      %input{:type => 'submit'}
+
+.div
+  %a{href: '/list'} Messages

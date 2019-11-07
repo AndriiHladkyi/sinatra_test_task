@@ -1,0 +1,12 @@
+%div
+  %p Body: #{@message.title}
+  %h4
+    - if @message.visited?
+      You visited this message, it will be destroyed after: #{@message.visits} visits
+    - elsif @message.destroyable?
+      Message will be destroyed after #{@message.hours} hour
+    - else
+      Crypted message
+
+.div
+  %a{href: '/'} Back
